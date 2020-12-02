@@ -483,10 +483,7 @@ import java.io.*;
 				String st2 = inp.readLine();
 				
 				HashMap<String, Boolean> processed = new HashMap<>();
-				if(!g.containsVertex(st1) && !g.containsVertex(st2) && !g.hasPath(st1, st2, processed))
-					System.out.println("THE INPUTS ARE INVALID");
-	   			else
-					System.out.println("SHORTEST DISTANCE FROM "+st1+" TO "+st2+" IS "+g.dijkstra(st1, st2, false)+"KM");
+				System.out.println("SHORTEST DISTANCE FROM "+st1+" TO "+st2+" IS "+g.dijkstra(st1, st2, false)+"KM");
 				break;
 				
 			case 4:
@@ -494,11 +491,8 @@ import java.io.*;
 				String sat1 = inp.readLine();
 				String sat2 = inp.readLine();
 				
-				HashMap<String, Boolean> processed1= new HashMap<>();
-				if(g.containsVertex(sat1) && g.containsVertex(sat2) && g.hasPath(sat1, sat2, processed1))
-					System.out.println("THE INPUTS ARE INVALID");
-				else
-					System.out.println("SHORTEST DISTANCE FROM "+sat1+" TO "+sat2+" IS "+g.dijkstra(sat1, sat2, true)/60+"KM");
+				HashMap<String, Boolean> processed1= new HashMap<>();				
+				System.out.println("SHORTEST DISTANCE FROM "+sat1+" TO "+sat2+" IS "+g.dijkstra(sat1, sat2, true)/60+"KM");
 				break;
 				
 			case 5:
@@ -527,7 +521,7 @@ import java.io.*;
 					System.out.print(str.get(len-3) + "   ==>    END");
 					System.out.println("\n~~~~~~~~~~~~~");
 				}
-				break;
+				
 				
 			case 6:
 				System.out.println("ENTER THE SOURCE AND DESTINATION STATIONS");
@@ -555,10 +549,8 @@ import java.io.*;
 					System.out.print(str.get(len-3) + "   ==>    END");
 					System.out.println("\n~~~~~~~~~~~~~");
 				}
-				break;
+				break;	
 				
-			default:
-				System.out.println("INVALID CHOICE");
 			}
 		}	
 	}
