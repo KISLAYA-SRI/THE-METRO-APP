@@ -556,8 +556,7 @@ import java.io.*;
 					System.out.println("\n~~~~~~~~~~~~~");
 				}
 				break;
-			case 7 : System.out.println("It has been over six months since Mumbai’s suburban train services, the lifeline of the metropolis, were drastically curtailed as part of the nationwide lockdown imposed as a reaction to the spread of the Covid-19 pandemic. With another phase of Unlock guidelines released for October, we explain the importance of Mumbai’s purposeful suburban train system and the reasons why there is a growing demand for resumption of its normal services");		
-				break;
+				
 			default:
 				System.out.println("INVALID CHOICE");
 			}
