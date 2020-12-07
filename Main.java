@@ -160,7 +160,7 @@ import java.io.*;
 			int cost;
 
 			/*
-			The compareTo method is defined in Java.land.Comparable.
+			The compareTo method is defined in Java.lang.Comparable.
 			Here we override the method because the conventional compareTo method
 			is used to compare strings,integers and other primitive data types. But
 			here in this case, we intend to compare two objects of DijkstraPair class.
