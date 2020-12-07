@@ -161,7 +161,7 @@ import java.io.*;
 
 			/*
 			The compareTo method is defined in Java.lang.Comparable.
-			Here we override the method because the conventional compareTo method
+			Here, we override the method because the conventional compareTo method
 			is used to compare strings,integers and other primitive data types. But
 			here in this case, we intend to compare two objects of DijkstraPair class.
 			*/ 
@@ -539,7 +539,7 @@ import java.io.*;
 					System.out.print(str.get(len-3) + "   ==>    END");
 					System.out.println("\n~~~~~~~~~~~~~");
 				}
-				
+				break;
 				
 			case 6:
 				System.out.println("ENTER THE SOURCE AND DESTINATION STATIONS");
