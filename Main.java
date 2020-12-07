@@ -539,7 +539,7 @@ import java.io.*;
 					System.out.print(str.get(len-3) + "   ==>    END");
 					System.out.println("\n~~~~~~~~~~~~~");
 				}
-				
+				break;
 				
 			case 6:
 				System.out.println("ENTER THE SOURCE AND DESTINATION STATIONS");
