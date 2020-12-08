@@ -3,10 +3,10 @@ import java.io.*;
 	
 	public class Graph_M 
 	{
-		public class Vertex 
-		{
-			HashMap<String, Integer> nbrs = new HashMap<>();
-		}
+		// public class Vertex 
+		// {
+		// 	HashMap<String, Integer> nbrs = new HashMap<>();
+		// }
 
 		static HashMap<String, Vertex> vtces;
 
@@ -153,85 +153,85 @@ import java.io.*;
 		}
 		
 		
-		private class DijkstraPair implements Comparable<DijkstraPair> 
-		{
-			String vname;
-			String psf;
-			int cost;
+		// private class DijkstraPair implements Comparable<DijkstraPair> 
+		// {
+		// 	String vname;
+		// 	String psf;
+		// 	int cost;
 
-			@Override
-			public int compareTo(DijkstraPair o) 
-			{
-				return o.cost - this.cost;
-			}
-		}
+		// 	@Override
+		// 	public int compareTo(DijkstraPair o) 
+		// 	{
+		// 		return o.cost - this.cost;
+		// 	}
+		// }
 		
-		public int dijkstra(String src, String des, boolean nan) 
-		{
-			int val = 0;
-			ArrayList<String> ans = new ArrayList<>();
-			HashMap<String, DijkstraPair> map = new HashMap<>();
+		// public int dijkstra(String src, String des, boolean nan) 
+		// {
+		// 	int val = 0;
+		// 	ArrayList<String> ans = new ArrayList<>();
+		// 	HashMap<String, DijkstraPair> map = new HashMap<>();
 
-			Heap<DijkstraPair> heap = new Heap<>();
+		// 	Heap<DijkstraPair> heap = new Heap<>();
 
-			for (String key : vtces.keySet()) 
-			{
-				DijkstraPair np = new DijkstraPair();
-				np.vname = key;
-				//np.psf = "";
-				np.cost = Integer.MAX_VALUE;
+		// 	for (String key : vtces.keySet()) 
+		// 	{
+		// 		DijkstraPair np = new DijkstraPair();
+		// 		np.vname = key;
+		// 		//np.psf = "";
+		// 		np.cost = Integer.MAX_VALUE;
 
-				if (key.equals(src)) 
-				{
-					np.cost = 0;
-					np.psf = key;
-				}
+		// 		if (key.equals(src)) 
+		// 		{
+		// 			np.cost = 0;
+		// 			np.psf = key;
+		// 		}
 
-				heap.add(np);
-				map.put(key, np);
-			}
+		// 		heap.add(np);
+		// 		map.put(key, np);
+		// 	}
 
-			//keep removing the pairs while heap is not empty
-			while (!heap.isEmpty()) 
-			{
-				DijkstraPair rp = heap.remove();
+		// 	//keep removing the pairs while heap is not empty
+		// 	while (!heap.isEmpty()) 
+		// 	{
+		// 		DijkstraPair rp = heap.remove();
 				
-				if(rp.vname.equals(des))
-				{
-					val = rp.cost;
-					break;
-				}
+		// 		if(rp.vname.equals(des))
+		// 		{
+		// 			val = rp.cost;
+		// 			break;
+		// 		}
 				
-				map.remove(rp.vname);
+		// 		map.remove(rp.vname);
 
-				ans.add(rp.vname);
+		// 		ans.add(rp.vname);
 				
-				Vertex v = vtces.get(rp.vname);
-				for (String nbr : v.nbrs.keySet()) 
-				{
-					if (map.containsKey(nbr)) 
-					{
-						int oc = map.get(nbr).cost;
-						Vertex k = vtces.get(rp.vname);
-						int nc;
-						if(nan)
-							nc = rp.cost + 120 + 40*k.nbrs.get(nbr);
-						else
-							nc = rp.cost + k.nbrs.get(nbr);
+		// 		Vertex v = vtces.get(rp.vname);
+		// 		for (String nbr : v.nbrs.keySet()) 
+		// 		{
+		// 			if (map.containsKey(nbr)) 
+		// 			{
+		// 				int oc = map.get(nbr).cost;
+		// 				Vertex k = vtces.get(rp.vname);
+		// 				int nc;
+		// 				if(nan)
+		// 					nc = rp.cost + 120 + 40*k.nbrs.get(nbr);
+		// 				else
+		// 					nc = rp.cost + k.nbrs.get(nbr);
 
-						if (nc < oc) 
-						{
-							DijkstraPair gp = map.get(nbr);
-							gp.psf = rp.psf + nbr;
-							gp.cost = nc;
+		// 				if (nc < oc) 
+		// 				{
+		// 					DijkstraPair gp = map.get(nbr);
+		// 					gp.psf = rp.psf + nbr;
+		// 					gp.cost = nc;
 
-							heap.updatePriority(gp);
-						}
-					}
-				}
-			}
-			return val;
-		}
+		// 					heap.updatePriority(gp);
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// 	return val;
+		// }
 		
 		private class Pair 
 		{
@@ -452,6 +452,7 @@ import java.io.*;
 		public static void main(String[] args) throws IOException
 		{
 			Graph_M g = new Graph_M();
+			Dijkstra dij = new Dijkstra();
 			Create_Metro_Map(g);
 			
 			System.out.println("****WELCOME TO THE METRO APP*****");
@@ -486,7 +487,7 @@ import java.io.*;
 				if(!g.containsVertex(st1) || !g.containsVertex(st2) || !g.hasPath(st1, st2, processed))
 					System.out.println("THE INPUTS ARE INVALID");
 				else
-				System.out.println("SHORTEST DISTANCE FROM "+st1+" TO "+st2+" IS "+g.dijkstra(st1, st2, false)+"KM");
+				System.out.println("SHORTEST DISTANCE FROM "+st1+" TO "+st2+" IS "+dij.dijkstra(st1, st2, false)+"KM");
 				break;
 				
 			case 4:
@@ -495,7 +496,7 @@ import java.io.*;
 				String sat2 = inp.readLine();
 				
 				HashMap<String, Boolean> processed1= new HashMap<>();				
-				System.out.println("SHORTEST DISTANCE FROM "+sat1+" TO "+sat2+" IS "+g.dijkstra(sat1, sat2, true)/60+"KM");
+				System.out.println("SHORTEST DISTANCE FROM "+sat1+" TO "+sat2+" IS "+dij.dijkstra(sat1, sat2, true)/60+"KM");
 				break;
 				
 			case 5:
