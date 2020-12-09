@@ -99,17 +99,28 @@ import java.io.*;
 
 		public void display_Map() 
 		{
-			System.out.println("------------------");
+			System.out.println("\t Delhi Metro Map");
+			System.out.println("\t------------------");
 			ArrayList<String> keys = new ArrayList<>(vtces.keySet());
 
 			for (String key : keys) 
 			{
-				String str = key + " => ";
+				String str = key + " =>\n";
 				Vertex vtx = vtces.get(key);
-				str = str + vtx.nbrs;
-				System.out.println(str);
+				ArrayList<String> vtxnbrs = new ArrayList<>(vtx.nbrs.keySet());
+				
+				for (String nbr : vtxnbrs)
+				{
+					str = str + "\t" + nbr + "\t";
+                    			if (nbr.length()<16)
+                    			str = str + "\t";
+                    			if (nbr.length()<8)
+                    			str = str + "\t";
+                    			str = str + vtx.nbrs.get(nbr) + "\n";
+                    			System.out.println(str);
+				}
 			}
-			System.out.println("------------------");
+			System.out.println("\t------------------");
 
 		}
 		
