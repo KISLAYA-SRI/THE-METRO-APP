@@ -3,6 +3,10 @@ import java.io.*;
 	
 	public class Graph_M 
 	{
+		public class Vertex 
+		{
+			HashMap<String, Integer> nbrs = new HashMap<>();
+		}
 
 		static HashMap<String, Vertex> vtces;
 

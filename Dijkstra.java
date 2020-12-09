@@ -56,13 +56,13 @@ import java.util.ArrayList;
 
 				ans.add(rp.vname);
 				
-				Vertex v = Graph_M.vtces.get(rp.vname);
+				Graph_M.Vertex v = Graph_M.vtces.get(rp.vname);
 				for (String nbr : v.nbrs.keySet()) 
 				{
 					if (map.containsKey(nbr)) 
 					{
 						int oc = map.get(nbr).cost;
-						Vertex k = Graph_M.vtces.get(rp.vname);
+						Graph_M.Vertex k = Graph_M.vtces.get(rp.vname);
 						int nc;
 						if(nan)
 							nc = rp.cost + 120 + 40*k.nbrs.get(nbr);
