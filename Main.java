@@ -553,7 +553,12 @@ import java.io.*;
 					System.out.println("\n~~~~~~~~~~~~~");
 				}
 				break;	
-				
+                        default:  //If switch expression does not match with any case, 
+                        //default statements are executed by the program.
+                            //No break is needed in the default case
+                            System.out.println("Please enter a valid option! ");
+                            System.out.println("The options you can choose are from 1 to 6. ");
+                            
 			}
 		}	
 	}
