@@ -116,11 +116,14 @@ import java.io.*;
 		public void display_Stations() 
 		{
 			System.out.println("....................................");
+			System.out.print("\n");
+			System.out.println("\t\t\tLIST OF ALL THE STATIONS");
+			System.out.print("\n");
 			ArrayList<String> keys = new ArrayList<>(vtces.keySet());
 			int i=1;
 			for(String key : keys) 
 			{
-				System.out.println(i + ". " + key);
+				System.out.println(i + "-> " + key);
 				i++;
 			}
 			System.out.println("....................................");
@@ -471,13 +474,14 @@ import java.io.*;
 			
 			System.out.println("****WELCOME TO THE METRO APP*****");
 			System.out.println("      ~~MENU OPTIONS~~");
-			System.out.println("1. LIST ALL THE STATIONS IN THE MAP");
-			System.out.println("2. SHOW THE METRO MAP");
-			System.out.println("3. GET SHORTEST DISTANCE FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
-			System.out.println("4. GET SHORTEST TIME TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
-			System.out.println("5. GET SHORTEST PATH (DISTANCE WISE) TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
-			System.out.println("6. GET SHORTEST PATH (TIME WISE) TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
-			System.out.println("ENTER YOUR CHOICE");
+			
+			System.out.println("1-> LIST ALL THE STATIONS IN THE MAP");
+			System.out.println("2-> SHOW THE METRO MAP");
+			System.out.println("3-> GET SHORTEST DISTANCE FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
+			System.out.println("4-> GET SHORTEST TIME TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
+			System.out.println("5-> GET SHORTEST PATH (DISTANCE WISE) TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
+			System.out.println("6-> GET SHORTEST PATH (TIME WISE) TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
+			System.out.print("ENTER YOUR CHOICE : ");
 			BufferedReader inp = new BufferedReader(new InputStreamReader(System.in));
 			int choice = Integer.parseInt(inp.readLine());
 			//STARTING SWITCH CASE
@@ -493,15 +497,16 @@ import java.io.*;
 				break;
 				
 			case 3:
-				System.out.println("ENTER THE SOURCE AND DESTINATION STATIONS");
+				System.out.print("ENTER THE SOURCE STATION : ");
 				String st1 = inp.readLine();
+				System.out.print("ENTER THE DESTINATION STATION : ");
 				String st2 = inp.readLine();
 				
 				HashMap<String, Boolean> processed = new HashMap<>();
 				if(!g.containsVertex(st1) || !g.containsVertex(st2) || !g.hasPath(st1, st2, processed))
-					System.out.println("THE INPUTS ARE INVALID");
+					System.out.println("THE INPUTS ARE INVALID\n\n");
 				else
-				System.out.println("SHORTEST DISTANCE FROM "+st1+" TO "+st2+" IS "+g.dijkstra(st1, st2, false)+"KM");
+				System.out.println("SHORTEST DISTANCE FROM ("+st1+") TO ("+st2+") IS "+g.dijkstra(st1, st2, false)+" KM\n\n");
 				break;
 				
 			case 4:
@@ -514,30 +519,31 @@ import java.io.*;
 				break;
 				
 			case 5:
-				System.out.println("ENTER THE SOURCE AND DESTINATION STATIONS");
+				System.out.print("ENTER THE SOURCE STATION : ");
 				String s1 = inp.readLine();
+				System.out.print("ENTER THE DESTINATION STATION : ");
 				String s2 = inp.readLine();
 				
 				HashMap<String, Boolean> processed2 = new HashMap<>();
 				if(!g.containsVertex(s1) || !g.containsVertex(s2) || !g.hasPath(s1, s2, processed2))
-					System.out.println("THE INPUTS ARE INVALID");
+					System.out.println("THE INPUTS ARE INVALID\n\n");
 				else 
 				{
 					ArrayList<String> str = g.get_Interchanges(g.Get_Minimum_Distance(s1, s2));
 					int len = str.size();
 					System.out.println("SOURCE STATION : " + s1);
-					System.out.println("SOURCE STATION : " + s2);
-					System.out.println("DISTANCE : " + str.get(len-1));
+					System.out.println("DESTINATION STATION : " + s2);
+					System.out.println("DISTANCE : " + str.get(len-1)+" KM");
 					System.out.println("NUMBER OF INTERCHANGES : " + str.get(len-2));
 					//System.out.println(str);
-					System.out.println("~~~~~~~~~~~~~");
-					System.out.println("START  ==>  " + str.get(0));
+					System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+					System.out.print("START  ==>  " + str.get(0)+"   ==>    ");
 					for(int i=1; i<len-3; i++)
 					{
 						System.out.println(str.get(i));
 					}
 					System.out.print(str.get(len-3) + "   ==>    END");
-					System.out.println("\n~~~~~~~~~~~~~");
+					System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 				}
 				break;
 				
@@ -548,7 +554,7 @@ import java.io.*;
 				
 				HashMap<String, Boolean> processed3 = new HashMap<>();
 				if(!g.containsVertex(ss1) || !g.containsVertex(ss2) || !g.hasPath(ss1, ss2, processed3))
-					System.out.println("THE INPUTS ARE INVALID");
+					System.out.println("THE INPUTS ARE INVALID\n\n");
 				else
 				{
 					ArrayList<String> str = g.get_Interchanges(g.Get_Minimum_Time(ss1, ss2));
