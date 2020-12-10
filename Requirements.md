@@ -13,10 +13,13 @@ The Collection in Java is a framework that provides an architecture to store and
 *  ArrayList
 * LinkedList
 * Stack
+* HashMap
 
 ### In Heap.java
 
+* HashMap
 * ArrayList
+
 
 
 ## Data Structures
