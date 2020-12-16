@@ -159,8 +159,9 @@ import java.io.*;
 			for (String nbr : nbrs) 
 			{
 
-				if (!processed.containsKey(nbr) && hasPath(nbr, vname2, processed))
-					return true;
+				if (!processed.containsKey(nbr))
+					if (hasPath(nbr, vname2, processed))
+						return true;
 			}
 
 			return false;
