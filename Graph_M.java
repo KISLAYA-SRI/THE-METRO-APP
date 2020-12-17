@@ -460,6 +460,7 @@ import java.io.*;
 			g.addVertex("IGI Airport~O");
 			g.addVertex("Jamia Millia Islamia");
 			g.addVertex("Rajouri Garden~BP");
+			g.addVertex("Netaji Subhash Place~PR");
 			g.addVertex("Punjabi Bagh West");
 			
 			g.addEdge("Noida Sector 62~B", "Botanical Garden~B", 8);
@@ -481,6 +482,7 @@ import java.io.*;
 			g.addEdge("IGI Airport~O","Jamia Millia Islamia", 15);
 			g.addEdge("Moti Nagar~B", "Rajouri Garden~BP", 2);
 			g.addEdge("Punjabi Bagh West", "Rajouri Garden~BP", 2);
+			g.addEdge("Punjabi Bagh West", "Netaji Subhash Place~PR", 3);
 		}
 		
 		public static void main(String[] args) throws IOException
@@ -511,7 +513,12 @@ import java.io.*;
 				System.out.println("6. GET SHORTEST PATH (TIME WISE) TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
 				System.out.println("7. EXIT THE MENU");
 				System.out.print("\nENTER YOUR CHOICE FROM THE ABOVE LIST (1 to 7) : ");
-				int choice = Integer.parseInt(inp.readLine());
+				int choice = -1;
+				try {
+					choice = Integer.parseInt(inp.readLine());
+				} catch(Exception e) {
+					// default will handle
+				}
 				System.out.print("\n***********************************************************\n");
 				if(choice == 7)
 				{
