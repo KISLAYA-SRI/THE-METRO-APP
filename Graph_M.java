@@ -459,6 +459,8 @@ import java.io.*;
 			g.addVertex("DDS Campus~O");
 			g.addVertex("IGI Airport~O");
 			g.addVertex("Jamia Millia Islamia");
+			g.addVertex("Rajouri Garden~BP");
+			g.addVertex("Punjabi Bagh West");
 			
 			g.addEdge("Noida Sector 62~B", "Botanical Garden~B", 8);
 			g.addEdge("Botanical Garden~B", "Yamuna Bank~B", 10);
@@ -477,6 +479,8 @@ import java.io.*;
 			g.addEdge("Shivaji Stadium~O", "DDS Campus~O", 7);
 			g.addEdge("DDS Campus~O", "IGI Airport~O", 8);
 			g.addEdge("IGI Airport~O","Jamia Millia Islamia", 15);
+			g.addEdge("Moti Nagar~B", "Rajouri Garden~BP", 2);
+			g.addEdge("Punjabi Bagh West", "Rajouri Garden~BP", 2);
 		}
 		
 		public static void main(String[] args) throws IOException
