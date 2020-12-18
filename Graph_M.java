@@ -89,7 +89,8 @@ import java.io.*;
 		{
 			Vertex vtx1 = vtces.get(vname1);
 			Vertex vtx2 = vtces.get(vname2);
-
+			
+			//check if the vertices given or the edge between these vertices exist or not
 			if (vtx1 == null || vtx2 == null || !vtx1.nbrs.containsKey(vname2)) {
 				return;
 			}
