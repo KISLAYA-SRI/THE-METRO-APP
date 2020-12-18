@@ -533,9 +533,82 @@ import java.io.*;
 					break;
 				
 				case 3:
+					System.out.println("List of station along with their codes:\n");
+					ArrayList<String> keys = new ArrayList<>(vtces.keySet());
+					int j=1,k=0,m=1;
+				        StringTokenizer stname;
+				        String temp="";
+				        String codes[] = new String[keys.size()];
+				        char c;
+					for(String key : keys) 
+				        {
+				            stname = new StringTokenizer(key);
+				            codes[j-1] = "";
+				            k=0;
+				            while (stname.hasMoreTokens())
+				            {
+				                temp = stname.nextToken();
+				                c = temp.charAt(0);
+				                while (c>47 && c<58)
+				                {
+				                    codes[j-1]+= c;
+				                    k++;
+				                    c = temp.charAt(k);
+				                }
+				                if ((c<48 || c>57) && c<123)
+				                    codes[j-1]+= c;
+					    }
+					    if (codes[j-1].length() < 2)
+				            codes[j-1]+= Character.toUpperCase(temp.charAt(1));
+				            
+				            System.out.print(j + ". " + key + "\t");
+				            if (key.length()<(22-m))
+                    			    System.out.print("\t");
+				            if (key.length()<(14-m))
+                    			    System.out.print("\t");
+                    			    if (key.length()<(6-m))
+                    			    System.out.print("\t");
+                    			    System.out.println(codes[j-1]);
+				            j++;
+				            if (j == (int)Math.pow(10,m))
+				            m++;
+				        }
+					
+					System.out.println("\n1. TO ENTER SERIAL NO. OF STATIONS\n2. TO ENTER CODE OF STATIONS\n3. TO ENTER NAME OF STATIONS\n");
+					System.out.println("ENTER YOUR CHOICE:");
+				        int ch = Integer.parseInt(inp.readLine());
+						
+					String st1 = "", st2 = "";
 					System.out.println("ENTER THE SOURCE AND DESTINATION STATIONS");
-					String st1 = inp.readLine();
-					String st2 = inp.readLine();
+					if (ch == 1)
+					{
+					    st1 = keys.get(Integer.parseInt(inp.readLine())-1);
+					    st2 = keys.get(Integer.parseInt(inp.readLine())-1);
+					}
+					else if (ch == 2)
+					{
+					    String a,b;
+					    a = (inp.readLine()).toUpperCase();
+					    for (j=0;j<keys.size();j++)
+					       if (a.equals(codes[j]))
+					           break;
+					    st1 = keys.get(j);
+					    b = (inp.readLine()).toUpperCase();
+					    for (j=0;j<keys.size();j++)
+					       if (b.equals(codes[j]))
+					           break;
+					    st2 = keys.get(j);
+					}
+					else if (ch == 3)
+					{
+					    st1 = inp.readLine();
+					    st2 = inp.readLine();
+					}
+					else
+					{
+					    System.out.println("Invalid choice");
+					    System.exit(0);
+					}
 				
 					HashMap<String, Boolean> processed = new HashMap<>();
 					if(!g.containsVertex(st1) || !g.containsVertex(st2) || !g.hasPath(st1, st2, processed))
