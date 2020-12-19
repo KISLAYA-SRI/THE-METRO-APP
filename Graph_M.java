@@ -119,7 +119,7 @@ import java.io.*;
                     			str = str + "\t";
                     			if (nbr.length()<8)
                     			str = str + "\t";
-                    			str = str + vtx.nbrs.get(nbr) + "\n"
+                    			str = str + vtx.nbrs.get(nbr) + "\n";
 				}
 				System.out.println(str);
 			}
