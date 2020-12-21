@@ -120,8 +120,8 @@ import java.io.*;
                     			if (nbr.length()<8)
                     			str = str + "\t";
                     			str = str + vtx.nbrs.get(nbr) + "\n";
-                    			System.out.println(str);
 				}
+				System.out.println(str);
 			}
 			System.out.println("\t------------------");
 			System.out.println("---------------------------------------------------\n");
