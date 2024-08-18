@@ -106,22 +106,17 @@ import java.io.*;
 			System.out.println("----------------------------------------------------\n");
 			ArrayList<String> keys = new ArrayList<>(vtces.keySet());
 
-			for (String key : keys) 
+			for (String key : keys)
 			{
-				String str = key + " =>\n";
+				System.out.println(key + " =>");
 				Vertex vtx = vtces.get(key);
 				ArrayList<String> vtxnbrs = new ArrayList<>(vtx.nbrs.keySet());
-				
+
 				for (String nbr : vtxnbrs)
 				{
-					str = str + "\t" + nbr + "\t";
-                    			if (nbr.length()<16)
-                    			str = str + "\t";
-                    			if (nbr.length()<8)
-                    			str = str + "\t";
-                    			str = str + vtx.nbrs.get(nbr) + "\n";
+					System.out.printf("    %-30s %d\n", nbr, vtx.nbrs.get(nbr));
 				}
-				System.out.println(str);
+				System.out.println();
 			}
 			System.out.println("\t------------------");
 			System.out.println("---------------------------------------------------\n");
